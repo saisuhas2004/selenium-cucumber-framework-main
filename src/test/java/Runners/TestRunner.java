@@ -6,6 +6,9 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
 
+import static io.cucumber.core.options.Constants.PLUGIN_PROPERTY_NAME;
+
+
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "StepDefinitions",
@@ -16,6 +19,7 @@ import org.testng.annotations.DataProvider;
                 "json:target/cucumber-reports/CucumberTestReport.json",
                 "timeline:target/test-output-thread/"
     }
+
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 

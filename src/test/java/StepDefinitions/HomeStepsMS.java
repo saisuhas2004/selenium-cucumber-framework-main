@@ -25,29 +25,34 @@ public class HomeStepsMS {
 
 
     @Given("MS Login About page is displayed")
-    public void goToMSLoginPage() {
+    public void goToMSLoginPage() throws InterruptedException {
+        Thread.sleep(1000);
         homePageMS.ClickOnAboutLink();
 
     }
 
 
     @Given("MS Login Services page is displayed")
-    public void msLoginServicesPageIsDisplayed() {
+    public void msLoginServicesPageIsDisplayed() throws InterruptedException {
+        Thread.sleep(1000);
         homePageMS.ClickOnServicesLinkLink();
     }
 
     @Given("MS Login Quality page is displayed")
-    public void msLoginQualityPageIsDisplayed() {
+    public void msLoginQualityPageIsDisplayed() throws InterruptedException {
+        Thread.sleep(1000);
        homePageMS.ClickOnQualityLink();
     }
 
     @Given("MS Login LateBreakingNews page is displayed")
-    public void msLoginLateBreakingNewsPageIsDisplayed() {
+    public void msLoginLateBreakingNewsPageIsDisplayed() throws InterruptedException {
+        Thread.sleep(1000);
        homePageMS.ClickOnLateBreakingNewsLink();
     }
 
     @Given("MS Login JobOpening page is displayed")
-    public void msLoginJobOpeningPageIsDisplayed() {
+    public void msLoginJobOpeningPageIsDisplayed() throws InterruptedException {
+        Thread.sleep(1000);
         homePageMS.ClickOnJobOpeningsLink();
     }
 
@@ -57,7 +62,7 @@ public class HomeStepsMS {
     }
 
     @When("Navigates to Page page tittle with header")
-    public void navigatesToPagePageTittleWithHeader(DataTable dataTable) {
+    public void navigatesToPagePageTittleWithHeader(DataTable dataTable){
         List<String> dataRow = dataTable.row(1);
         String pageHeader = dataRow.get(0);
         System.out.println("(Header Expected Value==" + pageHeader+ ")(Header Actual Value ==" + homePageMS.getPageHeaderText()+")");

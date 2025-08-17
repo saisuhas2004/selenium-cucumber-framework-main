@@ -3,6 +3,7 @@ package StepDefinitions;
 import Managers.FileReaderManager;
 import Utilities.TestContext;
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.openqa.selenium.OutputType;
@@ -25,6 +26,14 @@ public class Hooks {
         webDriver.get(FileReaderManager.getInstance().getConfigFileReader().getUrl());
     }
 
+    // Capture screenshot after each step
+    @AfterStep
+    public void afterEachStep(Scenario scenario) {
+        if (webDriver != null) {
+            byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", "Screenshot after step");
+        }
+    }
     @After
     public void tearDown(Scenario scenario) {
 
