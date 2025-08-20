@@ -89,7 +89,7 @@
                             <jsonFiles>
                                 <param>**/*.json</param>
                             </jsonFiles>
-                            <outputDirectory>target/cucumber-reports/advanced-reports</outputDirectory>
+                            <outputDirectory>target/cucumber-reports</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
