@@ -25,7 +25,7 @@ public class Hooks {
         webDriver = testContext.getDriverManager().getDriver();
         webDriver.get(FileReaderManager.getInstance().getConfigFileReader().getUrl());
     }
-
+/*
     // Capture screenshot after each step
     @AfterStep
     public void afterEachStep(Scenario scenario) {
@@ -34,6 +34,8 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", "Screenshot after step");
         }
     }
+    */
+
     @After
     public void tearDown(Scenario scenario) {
 
@@ -44,6 +46,13 @@ public class Hooks {
             } catch (WebDriverException noSupportScreenshot) {
                 System.err.println(noSupportScreenshot.getMessage());
             }
+        }
+        else{
+            if (webDriver != null) {
+                byte[] screenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+                scenario.attach(screenshot, "image/png", "Screenshot after step");
+            }
+
         }
         testContext.getDriverManager().closeDriver();
     }
