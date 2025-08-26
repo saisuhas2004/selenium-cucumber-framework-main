@@ -1,11 +1,7 @@
 package Managers;
 
-import PageObjects.HomePage;
-import PageObjects.LoginPage;
+import PageObjects.*;
 import org.openqa.selenium.WebDriver;
-import PageObjects.ProductDetailPage;
-import PageObjects.ProductListPage;
-import PageObjects.HomePageMS;
 
 public class PageObjectManager {
 
@@ -15,6 +11,7 @@ public class PageObjectManager {
     private ProductListPage productListPage;
     private ProductDetailPage productDetailPage;
     private HomePageMS homepageMS;
+    private AllyHomePage allyHomePage;
     public PageObjectManager(WebDriver webDriver) {
         this.webDriver = webDriver;
     }
@@ -26,6 +23,10 @@ public class PageObjectManager {
 
     public HomePageMS getHomePageMS() {
         return (homepageMS == null) ? homepageMS = new HomePageMS(webDriver) : homepageMS;
+    }
+
+    public AllyHomePage getAllyHomePage() {
+        return (allyHomePage == null) ? allyHomePage = new AllyHomePage(webDriver) : allyHomePage;
     }
 
     //General If...Else

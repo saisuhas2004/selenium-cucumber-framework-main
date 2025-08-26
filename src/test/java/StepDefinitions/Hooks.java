@@ -11,6 +11,8 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
+import java.util.concurrent.TimeUnit;
+
 public class Hooks {
 
     TestContext testContext;
@@ -21,9 +23,17 @@ public class Hooks {
     }
 
     @Before
-    public void setUp() {
+    public void setUp(Scenario scenario) {
         webDriver = testContext.getDriverManager().getDriver();
-        webDriver.get(FileReaderManager.getInstance().getConfigFileReader().getUrl());
+        if (scenario.getSourceTagNames().contains("@MSMedicaid")) {
+
+            webDriver.get(FileReaderManager.getInstance().getConfigFileReader().getUrl("url"));
+        }
+        else if (scenario.getSourceTagNames().contains("@AllyBank")){
+            webDriver.get(FileReaderManager.getInstance().getConfigFileReader().getUrl("Allyurl"));
+
+        }
+        webDriver.manage().timeouts().pageLoadTimeout(100, TimeUnit.SECONDS);
     }
 /*
     // Capture screenshot after each step

@@ -35,8 +35,8 @@ public class ConfigFileReader {
         }
     }
 
-    public String getUrl() {
-        String url = properties.getProperty("url");
+    public String getUrl(String Url ) {
+        String url = properties.getProperty(Url);
 
         //Simply If...Else
         if (url != null) return url;
